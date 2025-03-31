@@ -42,9 +42,7 @@ def preprocess_input(input_dict):
 def predict(input_dict):
     input_df=preprocess_input(input_dict)
     prediction=best_model_logistic.predict(input_df)
-    threshold = 0.21007746 # Adjust this threshold to achieve desired recall
     prediction_proba = best_model_logistic.predict_proba(input_df)[:, 1]
-    prediction = (prediction_proba >= threshold).astype(int)
     return prediction[0],prediction_proba[0]
 
 
