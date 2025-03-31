@@ -1,7 +1,7 @@
 import pandas as pd
 import joblib
-best_model_logistic=joblib.load("artifacts\best_model_logistic.joblib")
-scaler_col=joblib.load("artifacts\scaler_col.joblib")
+best_model_logistic=joblib.load("artifacts/best_model_logistic.joblib")
+scaler_col=joblib.load("artifacts/scaler_col.joblib")
 def calc_smoking(smoking_hist):
         smoking_mapping = {
             'never': 0,
