@@ -1,7 +1,7 @@
 import pandas as pd
 import joblib
-model_xgb=joblib.load("artifacts/model_xgb.joblib")
-scaler_col=joblib.load("artifacts/scaler_col.joblib")
+best_model_logistic=joblib.load("artifacts\best_model_logistic.joblib")
+scaler_col=joblib.load("artifacts\scaler_col.joblib")
 def calc_smoking(smoking_hist):
         smoking_mapping = {
             'never': 0,
@@ -41,13 +41,11 @@ def preprocess_input(input_dict):
 
 def predict(input_dict):
     input_df=preprocess_input(input_dict)
-    prediction=model_xgb.predict(input_df)
-    threshold = 0.21364881 # Adjust this threshold to achieve desired recall
-    prediction_proba = model_xgb.predict_proba(input_df)[:, 1]
+    prediction=best_model_logistic.predict(input_df)
+    threshold = 0.21007746 # Adjust this threshold to achieve desired recall
+    prediction_proba = best_model_logistic.predict_proba(input_df)[:, 1]
     prediction = (prediction_proba >= threshold).astype(int)
-    return prediction[0]
-
-    
+    return prediction[0],prediction_proba[0]
 
 
 
