@@ -1,7 +1,8 @@
 import pandas as pd
 import joblib
-best_model_logistic=joblib.load("artifacts/best_model_logistic.joblib")
-scaler_col=joblib.load("artifacts/scaler_col.joblib")
+best_model_logistic=joblib.load("artifacts//best_model_logistic.joblib")
+best_model_xgb=joblib.load("artifacts//best_model_xgb.joblib")
+scaler_col=joblib.load("artifacts//scaler_col.joblib")
 def calc_smoking(smoking_hist):
         smoking_mapping = {
             'never': 0,
@@ -40,10 +41,10 @@ def preprocess_input(input_dict):
     return df
 
 def predict(input_dict):
-    input_df=preprocess_input(input_dict)
-    prediction=best_model_logistic.predict(input_df)
-    prediction_proba = best_model_logistic.predict_proba(input_df)[:, 1]
-    return prediction[0],prediction_proba[0]
+    input_df = preprocess_input(input_dict)
+    prediction_proba = best_model_xgb.predict_proba(input_df)[:, 1]
+    prediction = (prediction_proba >= 0.30).astype(int)
+    return prediction[0], prediction_proba[0]
 
 
 
