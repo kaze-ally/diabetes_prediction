@@ -45,11 +45,13 @@ input_dict = {
             
 # Button to make prediction
 if st.button('Predict'):
-    prediction = predict(input_dict)
+    prediction,proba= predict(input_dict)
+    st.write(f"Probability of being diabetic: {proba:.2%}")
     if prediction==0:
         st.success("The model predicts: **No Diabetic")
     if prediction==1:
         st.error("The model predicts: **Diabetic**")
+
 
 
         
