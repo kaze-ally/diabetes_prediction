@@ -37,3 +37,7 @@ The prediction model is based on XGBoost, a gradient boosting algorithm that pro
 
 ## dataset link:
 https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset
+
+
+# here is the link for the diabetes prediction app:
+https://diabetesprediction-k2i3eokphacdbcawxwzgnq.streamlit.app/
